@@ -30,6 +30,8 @@
 
             home-manager.users.orry = {
               home.stateVersion = "26.05";
+              home.file.".ssh/known_hosts.d/github".source = ./ssh/github_known_hosts;
+              home.file.".ssh/allowed_signers".source = ./ssh/allowed_signers;
               
               programs.ssh = {
                 enable = true;
@@ -41,6 +43,9 @@
                     User = "git";
                     IdentityFile = "~/.ssh/id_ed25519";
                     IdentitiesOnly = true;
+          
+                    UserKnownHostsFile = "~/.ssh/known_hosts.d/github";
+                    StrictHostKeyChecking = "yes";
                   };
                 };
               };
@@ -57,6 +62,7 @@
                 settings = {
                   user.name = "Orry Jarvis";
                   user.email = "orryjarvis@gmail.com";
+                  gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
                   pull.rebase = true;
                   fetch.prune = true;
                   push.autoSetupRemote = true;                  

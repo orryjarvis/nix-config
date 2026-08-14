@@ -39,4 +39,7 @@ gh ssh-key add ~/.ssh/id_ed25519.pub \
 gh ssh-key add ~/.ssh/id_ed25519.pub \
   --type signing \
   --title "$(hostname) signing"
+
+#Add key to ssh/allowed_signers and commit
+#So other machines can validate this machines commit
 ```
