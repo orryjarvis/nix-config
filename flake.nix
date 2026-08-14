@@ -30,9 +30,29 @@
 
             home-manager.users.orry = {
               home.stateVersion = "26.05";
+              
+              programs.ssh = {
+                enable = true;
+                enableDefaultConfig = false;
+
+                settings = {
+                  "github.com" = {
+                    HostName = "github.com";
+                    User = "git";
+                    IdentityFile = "~/.ssh/id_ed25519";
+                    IdentitiesOnly = true;
+                  };
+                };
+              };
 
               programs.git = {
                 enable = true;
+
+                signing = {
+                  format = "ssh";
+                  key = "~/.ssh/id_ed25519.pub";
+                  signByDefault = true;
+                };
 
                 settings = {
                   user.name = "Orry Jarvis";
@@ -42,6 +62,14 @@
                   push.autoSetupRemote = true;                  
                   init.defaultBranch = "main";
 	        };
+              };
+
+              programs.gh = {
+                enable = true;
+
+                settings = {
+                  git_protocol = "ssh";
+                };
               };
             };
           }
