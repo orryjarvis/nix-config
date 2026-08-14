@@ -1,8 +1,13 @@
 # TODO
 - build custom WSL tarball
-- file separation
-- ssh for github
-- git commit signature
+- file/module separation
+- productivity
+  - modal editor
+  - shell config
+    - completions
+    - context (git branch, etc)
+  - codex
+  - multiplexer
 
 # New machine bootstrapping
 Note: Steps 1 and 3 would be improved if I built a custom tarball
