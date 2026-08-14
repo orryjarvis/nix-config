@@ -77,6 +77,16 @@
                   git_protocol = "ssh";
                 };
               };
+
+              programs.helix = {
+                enable = true;
+
+                settings = {
+                  editor = {
+                    mouse = false;
+                  };
+                };
+              };
             };
           }
         ];
