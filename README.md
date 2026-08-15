@@ -1,23 +1,27 @@
 # TODO
-- build custom WSL tarball
 - separate hosts
-- file/module separation
+- further file/module separation
 - productivity
-  - modal editor
+  - task running
+  - git hooks
+  - linting / static analysis
+  - dependency analysis?
   - shell config
+    - readable colors
     - completions
     - context (git branch, etc)
   - codex
+    - agent config
   - multiplexer
 
 # New machine bootstrapping
-Note: Steps 1 and 3 would be improved if I built a custom tarball
+Note: Step 3 is unnecessary if using a custom tarball output from this repo for step 1
 1. Install NixOS.wsl from latest release
 2. get flake files onto the machine
 3. build and switch to flake -- special sequence to create new user
-4. ssh keys
+4. ssh keys (instructions below)
 
-## Initial flake + new user bootstrap
+## Initial flake + new user bootstrap (non custom tarball)
 In NixOS:
 1. sudo nixos-rebuild boot --flake .#nixos
 From powershell:
@@ -25,7 +29,7 @@ From powershell:
 3. wsl -d NixOS --user root exit
 4. wsl -t NixOS
 
-## Build tarball
+## Build custom tarball
 ```
 sudo nix run \
   --print-build-logs \
