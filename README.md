@@ -24,6 +24,14 @@ From powershell:
 3. wsl -d NixOS --user root exit
 4. wsl -t NixOS
 
+## Build tarball
+```
+sudo nix run \
+  --print-build-logs \
+  --extra-experimental-features "nix-command flakes" \
+  .#nixosConfigurations.nixos.config.system.build.tarballBuilder
+```
+
 ## Developing
 - `nix flake check`
 - `nix flake update`
