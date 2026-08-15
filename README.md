@@ -1,5 +1,6 @@
 # TODO
 - build custom WSL tarball
+- separate hosts
 - file/module separation
 - productivity
   - modal editor
