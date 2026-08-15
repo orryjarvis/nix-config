@@ -37,6 +37,7 @@ sudo nix run \
 - `nix flake check`
 - `nix flake update`
 - `sudo nixos-rebuild switch --flake .#nixos`
+- `exec bash` if shell config is supposed to change between generations
 
 ## formatting
 - `nix fmt *.nix`

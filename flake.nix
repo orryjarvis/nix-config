@@ -23,6 +23,13 @@
     in
     {
       formatter.${system} = pkgs.nixfmt;
+
+      devShells.${system}.default = pkgs.mkShell {
+        packages = [
+          pkgs.nixfmt
+        ];
+      };
+
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
           inherit system;
