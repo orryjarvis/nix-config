@@ -23,13 +23,20 @@
             ];
             system.stateVersion = "26.05";
             wsl.enable = true;
- 	    wsl.defaultUser = "orry";
+      	    wsl.defaultUser = "orry";
 
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
 
             home-manager.users.orry = {
               home.stateVersion = "26.05";
+
+              manual = {
+                html.enable = false;
+                json.enable = false;
+                manpages.enable = false;
+              };
+              
               home.file.".ssh/known_hosts.d/github".source = ./ssh/github_known_hosts;
               home.file.".ssh/allowed_signers".source = ./ssh/allowed_signers;
               
