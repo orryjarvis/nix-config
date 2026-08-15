@@ -27,6 +27,7 @@
       devShells.${system}.default = pkgs.mkShell {
         packages = [
           pkgs.nixfmt
+          pkgs.nixd
         ];
       };
 
