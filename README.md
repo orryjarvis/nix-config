@@ -38,6 +38,9 @@ sudo nix run \
 - `nix flake update`
 - `sudo nixos-rebuild switch --flake .#nixos`
 
+## formatting
+- `nix fmt *.nix`
+
 ## ssh keys
 Note, might have to relogin with some more parameters to get ssh admin 
 control

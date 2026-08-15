@@ -9,29 +9,42 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixos-wsl, home-manager, ... }: {
-    nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          nixos-wsl.nixosModules.default
-          home-manager.nixosModules.home-manager
-          {
-            nix.settings.experimental-features = [
-              "nix-command"
-              "flakes"
-            ];
-            system.stateVersion = "26.05";
-            wsl.enable = true;
-      	    wsl.defaultUser = "orry";
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixos-wsl,
+      home-manager,
+      ...
+    }:
+    let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
+    {
+      formatter.${system} = pkgs.nixfmt;
+      nixosConfigurations = {
+        nixos = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            nixos-wsl.nixosModules.default
+            home-manager.nixosModules.home-manager
+            {
+              nix.settings.experimental-features = [
+                "nix-command"
+                "flakes"
+              ];
+              system.stateVersion = "26.05";
+              wsl.enable = true;
+              wsl.defaultUser = "orry";
 
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
 
-            home-manager.users.orry = import ./home;
-          }
-        ];
+              home-manager.users.orry = import ./home;
+            }
+          ];
+        };
       };
     };
-  };
 }
